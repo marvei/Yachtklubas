@@ -11,7 +11,11 @@ namespace YachtKlubas.Items
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                string ConnectString = "server=localhost;Port=3302;database=test;UID=root;pwd=;";
+                MySqlConnection cnn = new MySqlConnection
+            }
         }
 
         protected void AddNewItem_Click(object sender, EventArgs e)

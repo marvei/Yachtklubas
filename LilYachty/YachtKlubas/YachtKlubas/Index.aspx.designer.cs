@@ -40,57 +40,57 @@ namespace YachtKlubas {
         protected global::System.Web.UI.WebControls.Button Register;
         
         /// <summary>
-        /// Items control.
+        /// ItemsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Items;
+        protected global::System.Web.UI.WebControls.Button ItemsButton;
         
         /// <summary>
-        /// Employees control.
+        /// EmployeesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Employees;
+        protected global::System.Web.UI.WebControls.Button EmployeesButton;
         
         /// <summary>
-        /// Storage control.
+        /// StorageButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Storage;
+        protected global::System.Web.UI.WebControls.Button StorageButton;
         
         /// <summary>
-        /// Packages control.
+        /// PackagesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Packages;
+        protected global::System.Web.UI.WebControls.Button PackagesButton;
         
         /// <summary>
-        /// Cart control.
+        /// CartButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Cart;
+        protected global::System.Web.UI.WebControls.Button CartButton;
         
         /// <summary>
-        /// Favorite control.
+        /// FavoriteButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Favorite;
+        protected global::System.Web.UI.WebControls.Button FavoriteButton;
     }
 }

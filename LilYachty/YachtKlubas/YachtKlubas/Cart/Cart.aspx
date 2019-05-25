@@ -10,6 +10,10 @@
     <form id="form1" runat="server">
         <div>
             <h1>Cart page</h1>
+            <p>
+                Parodyti susirinktas prekes ir butonas jog paconfirmintu ir sumoketu.
+            </p>
+            <asp:Button ID="Comfirm" runat="server" Text="Comfirm and Pay" />
         </div>
     </form>
 </body>

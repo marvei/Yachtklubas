@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <h1>Favorite Page</h1>
+            <p>Atvaizduoti megstamiausius ir paspaudus pervesti i prekes page</p>
         </div>
     </form>
 </body>

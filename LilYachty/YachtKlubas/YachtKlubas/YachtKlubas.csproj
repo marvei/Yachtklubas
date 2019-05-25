@@ -68,14 +68,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Cart\Cart.aspx" />
-    <Content Include="Employees\Employees.aspx" />
+    <Content Include="Employees\AddNewEmployee\AddEmployee.aspx" />
+    <Content Include="Employees\Employee.aspx" />
     <Content Include="Favorite\Favorite.aspx" />
+    <Content Include="Items\AddNew\AddNewItem.aspx" />
+    <Content Include="Items\CreateNewPackage\CreateNewPackage.aspx" />
     <Content Include="Items\Items.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Packages\Packages.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="Storage\Edit\EditItem.aspx" />
     <Content Include="Storage\Storage.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Index.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -86,12 +92,19 @@
     <Compile Include="Cart\Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Employees\Employees.aspx.cs">
-      <DependentUpon>Employees.aspx</DependentUpon>
+    <Compile Include="Employees\AddNewEmployee\AddEmployee.aspx.cs">
+      <DependentUpon>AddEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employees\Employees.aspx.designer.cs">
-      <DependentUpon>Employees.aspx</DependentUpon>
+    <Compile Include="Employees\AddNewEmployee\AddEmployee.aspx.designer.cs">
+      <DependentUpon>AddEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Employees\Employee.aspx.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Employees\Employee.aspx.designer.cs">
+      <DependentUpon>Employee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Favorite\Favorite.aspx.cs">
       <DependentUpon>Favorite.aspx</DependentUpon>
@@ -99,6 +112,20 @@
     </Compile>
     <Compile Include="Favorite\Favorite.aspx.designer.cs">
       <DependentUpon>Favorite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Items\AddNew\AddNewItem.aspx.cs">
+      <DependentUpon>AddNewItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Items\AddNew\AddNewItem.aspx.designer.cs">
+      <DependentUpon>AddNewItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Items\CreateNewPackage\CreateNewPackage.aspx.cs">
+      <DependentUpon>CreateNewPackage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Items\CreateNewPackage\CreateNewPackage.aspx.designer.cs">
+      <DependentUpon>CreateNewPackage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Items\Items.aspx.cs">
       <DependentUpon>Items.aspx</DependentUpon>
@@ -129,12 +156,12 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Storage\Storage.aspx.cs">
-      <DependentUpon>Storage.aspx</DependentUpon>
+    <Compile Include="Storage\Edit\EditItem.aspx.cs">
+      <DependentUpon>EditItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Storage\Storage.aspx.designer.cs">
-      <DependentUpon>Storage.aspx</DependentUpon>
+    <Compile Include="Storage\Edit\EditItem.aspx.designer.cs">
+      <DependentUpon>EditItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
@@ -142,6 +169,13 @@
     </Compile>
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\Storage.aspx.cs">
+      <DependentUpon>Storage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Storage\Storage.aspx.designer.cs">
+      <DependentUpon>Storage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

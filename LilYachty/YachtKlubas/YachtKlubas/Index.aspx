@@ -18,12 +18,12 @@
                 <br />
                 <div>
 
-                    <asp:Button ID="Items" runat="server" Text="Items" OnClick="Items_Click" />
-                    <asp:Button ID="Employees" runat="server" Text="Employees" OnClick="Employees_Click" />
-                    <asp:Button ID="Storage" runat="server" Text="Storage" OnClick="Storage_Click" />
-                    <asp:Button ID="Packages" runat="server" Text="Packages" OnClick="Packages_Click" />
-                    <asp:Button ID="Cart" runat="server" Text="Cart" OnClick="Cart_Click" style="height: 29px" />
-                    <asp:Button ID="Favorite" runat="server" Text="Favorite" OnClick="Favorite_Click" />
+                    <asp:Button ID="ItemsButton" runat="server" Text="Items" OnClick="Items_Click" />
+                    <asp:Button ID="EmployeesButton" runat="server" Text="Employees" OnClick="Employees_Click" />
+                    <asp:Button ID="StorageButton" runat="server" Text="Storage" OnClick="Storage_Click" />
+                    <asp:Button ID="PackagesButton" runat="server" Text="Packages" OnClick="Packages_Click" />
+                    <asp:Button ID="CartButton" runat="server" Text="Cart" OnClick="Cart_Click" style="height: 29px" />
+                    <asp:Button ID="FavoriteButton" runat="server" Text="Favorite" OnClick="Favorite_Click" />
 
                 </div>
             </div>

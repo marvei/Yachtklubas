@@ -31,7 +31,7 @@ namespace YachtKlubas
 
         protected void Employees_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Employees/Employees.aspx");
+            Response.Redirect("~/Employees/Employee.aspx");
         }
 
         protected void Storage_Click(object sender, EventArgs e)

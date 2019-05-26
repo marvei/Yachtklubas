@@ -4,13 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Yachtos.Database;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yachtos.Models
 {
     public class Items
     {
         public int id { get; set; }
-        public Storage fk_storage { get; set; }
+        public virtual Storage fk_storage { get; set; }
+        [ForeignKey("id")]
+        public int StorageId { get; set; }
 
         public double price { get; set; }
 

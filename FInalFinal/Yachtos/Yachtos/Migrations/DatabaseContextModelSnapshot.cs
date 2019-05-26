@@ -35,13 +35,13 @@ namespace Yachtos.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("fk_storageid");
+                    b.Property<int>("StorageId");
 
                     b.Property<double>("price");
 
                     b.HasKey("id");
 
-                    b.HasIndex("fk_storageid");
+                    b.HasIndex("StorageId");
 
                     b.ToTable("Items");
                 });
@@ -65,15 +65,17 @@ namespace Yachtos.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("Fk_itemid");
-
                     b.Property<int?>("Fk_packagesid");
+
+                    b.Property<int>("ItemsId");
+
+                    b.Property<int>("PackageId");
 
                     b.HasKey("id");
 
-                    b.HasIndex("Fk_itemid");
-
                     b.HasIndex("Fk_packagesid");
+
+                    b.HasIndex("ItemsId");
 
                     b.ToTable("PackagesItems");
                 });
@@ -126,18 +128,20 @@ namespace Yachtos.Migrations
                 {
                     b.HasOne("Yachtos.Models.Storage", "fk_storage")
                         .WithMany()
-                        .HasForeignKey("fk_storageid");
+                        .HasForeignKey("StorageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Yachtos.Models.PackagesItems", b =>
                 {
-                    b.HasOne("Yachtos.Models.Items", "Fk_item")
-                        .WithMany()
-                        .HasForeignKey("Fk_itemid");
-
                     b.HasOne("Yachtos.Models.Packages", "Fk_packages")
                         .WithMany()
                         .HasForeignKey("Fk_packagesid");
+
+                    b.HasOne("Yachtos.Models.Items", "Fk_item")
+                        .WithMany()
+                        .HasForeignKey("ItemsId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

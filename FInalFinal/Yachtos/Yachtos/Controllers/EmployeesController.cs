@@ -12,142 +12,43 @@ namespace Yachtos.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly DatabaseContext _context;
-
-        public EmployeesController(DatabaseContext context)
+        public IActionResult Index()
         {
-            _context = context;
+            Employee employee = new Employee();
+            return View(employee.GetEmployee());
         }
-
-        // GET: Employees
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Employee.ToListAsync());
-        }
-
-        // GET: Employees/Details/5
-        public async Task<IActionResult> Details(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return View(employee);
-        }
-
-        // GET: Employees/Create
         public IActionResult Create()
         {
-            return View();
+            Employee employee = new Employee();
+            return View(employee);
         }
-
-        // POST: Employees/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId")] Employee employee)
+        public IActionResult CreateConfirmed([Bind("EmployeeId, fk_User")] Employee employee)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(employee);
-        }
 
-        // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            employee.Create();
 
-            var employee = await _context.Employee.FindAsync(id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-            return View(employee);
-        }
-
-        // POST: Employees/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EmployeeId")] Employee employee)
-        {
-            if (id != employee.EmployeeId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeeExists(employee.EmployeeId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(employee);
-        }
-
-        // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return View(employee);
-        }
-
-        // POST: Employees/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
-        {
-            var employee = await _context.Employee.FindAsync(id);
-            _context.Employee.Remove(employee);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        private bool EmployeeExists(string id)
+        public IActionResult Delete(string id)
         {
-            return _context.Employee.Any(e => e.EmployeeId == id);
+            string EmployeeId = id;
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            Employee emp = new Employee();
+            return View(emp.GetEmployee(id: EmployeeId));
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmed(string id)
+        {
+            string EmployeeId = id;
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            Employee emp = new Employee();
+            emp.DeleteEmployeeById(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Yachtos.Models.Employee>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Employees";
 }
 
 <h2>Index</h2>
@@ -12,12 +12,30 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_User.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fk_User.Email)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_User.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fk_User.Email)
+            </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.EmployeeId">Details</a> |
@@ -27,3 +45,4 @@
 }
     </tbody>
 </table>
+

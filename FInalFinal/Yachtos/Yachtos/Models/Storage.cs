@@ -72,5 +72,30 @@ namespace Yachtos.Models
                 }
             }
         }
+        public void Update()
+        {
+            Storage temp = new Storage();
+            temp.id = id;
+            temp.Image = Image;
+            temp.Item = Item;
+            temp.kiekis = kiekis;
+            temp.description = description;
+            using (var db = new DatabaseContext())
+            {
+                foreach (var item in db.Storage)
+                {
+                    if(item.id == id)
+                    {
+                        item.Image = temp.Image;
+                        item.Item = temp.Item;
+                        item.kiekis = temp.kiekis;
+                        item.description = temp.description;
+                        db.Storage.Update(item);
+                        db.SaveChanges();
+
+                    }
+                }
+            }
+        }
     }
 }

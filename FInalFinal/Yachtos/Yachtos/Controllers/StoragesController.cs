@@ -50,5 +50,31 @@ namespace Yachtos.Controllers
             poll.DeletePollById(id);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Edit(int? id)
+        {
+            int? PollId = id;
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            Storage poll = new Storage();
+            return View(poll.GetPoll(id: PollId));
+        }
+
+        public IActionResult Details(int? id)
+        {
+            int? storid = id;
+            Storage stor = new Storage();
+            return View(stor.GetPoll(id: storid));
+        }
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditConfirmed([Bind("id, Item,description,Image,kiekis")] Storage poll)
+        {
+
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            poll.Update();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

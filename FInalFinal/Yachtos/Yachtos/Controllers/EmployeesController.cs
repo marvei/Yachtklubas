@@ -24,11 +24,13 @@ namespace Yachtos.Controllers
         }
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateConfirmed([Bind("EmployeeId, fk_User")] Employee employee)
+        public IActionResult CreateConfirmed([Bind("EmployeeId, fk_User, id")] Employee employee)
         {
-
+           int c = int.Parse(Request.Form["id"]);
+            
+            
             DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
-            employee.Create();
+            employee.Create(c);
 
             return RedirectToAction(nameof(Index));
         }
@@ -47,7 +49,7 @@ namespace Yachtos.Controllers
             string EmployeeId = id;
             DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
             Employee emp = new Employee();
-            emp.DeleteEmployeeById(id);
+            emp.DeleteEmployeeById(EmployeeId);
             return RedirectToAction(nameof(Index));
         }
     }

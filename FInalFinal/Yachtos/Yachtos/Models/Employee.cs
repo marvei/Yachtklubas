@@ -11,11 +11,12 @@ namespace Yachtos.Models
     public class Employee
     {
         public string EmployeeId { get; set; }
+
         public virtual User fk_User { get; set; }
 
         [ForeignKey("id")]
         public int UserId { get; set; }
-        
+
 
         public List<Employee> GetEmployee()
         {
@@ -43,19 +44,35 @@ namespace Yachtos.Models
                 {
                     users.Add(new User
                     {
+                        Id = item.Id,
                         Username = item.Username,
-                        Id = item.Id
+                        Password = item.Password,
+                        Teises = item.Teises,
+                        Email = item.Email
                     });
                 }
             }
             return users;
         }
 
-        public void Create()
+        public User getUserById(int? id)
         {
+            User temp = new User();
             using (var db = new DatabaseContext())
             {
-                db.Employee.Add(new Employee { EmployeeId = this.EmployeeId, fk_User = this.fk_User });
+                temp = db.User.Find(id);
+            }
+            Console.WriteLine(temp);
+            return temp;
+        }
+
+        public void Create(int id)
+        {
+            User temp = getUserById(id);
+
+            using (var db = new DatabaseContext())
+            {
+                db.Employee.Attach(new Employee { EmployeeId = this.EmployeeId, fk_User = temp, UserId = id });
                 db.SaveChanges();
             }
         }

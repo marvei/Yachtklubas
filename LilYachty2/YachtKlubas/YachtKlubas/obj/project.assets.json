@@ -11797,31 +11797,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Julius\\.nuget\\packages\\": {},
+    "C:\\Users\\Martynas\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\LilYachty2\\YachtKlubas\\YachtKlubas\\YachtKlubas.csproj",
+      "projectUniqueName": "C:\\Users\\Martynas\\Source\\Repos\\marvei\\Yachtklubas\\LilYachty2\\YachtKlubas\\YachtKlubas\\YachtKlubas.csproj",
       "projectName": "YachtKlubas",
-      "projectPath": "E:\\LilYachty2\\YachtKlubas\\YachtKlubas\\YachtKlubas.csproj",
-      "packagesPath": "C:\\Users\\Julius\\.nuget\\packages\\",
-      "outputPath": "E:\\LilYachty2\\YachtKlubas\\YachtKlubas\\obj\\",
+      "projectPath": "C:\\Users\\Martynas\\Source\\Repos\\marvei\\Yachtklubas\\LilYachty2\\YachtKlubas\\YachtKlubas\\YachtKlubas.csproj",
+      "packagesPath": "C:\\Users\\Martynas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Martynas\\Source\\Repos\\marvei\\Yachtklubas\\LilYachty2\\YachtKlubas\\YachtKlubas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Julius\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Martynas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

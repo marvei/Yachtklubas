@@ -16,13 +16,13 @@ namespace Yachtos.Controllers
         // GET: Items
         public IActionResult Index()
         {
-           
+
             return View();
         }
         public IActionResult Create()
         {
-
-            return View();
+            Items items = new Items();
+            return View(items);
         }
     }
 }

@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 
 namespace Yachtos.Models
 {
-    public class Items
+    public class PackagesItems
     {
         public int id { get; set; }
-        public Storage fk_storage { get; set; }
-
-        public double price { get; set; }
-
+        public Packages Fk_packages { get; set; }
+        public Items Fk_item { get; set; }
     }
 }

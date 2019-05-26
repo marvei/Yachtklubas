@@ -7,5 +7,8 @@ namespace Yachtos.Models
 {
     public class Packages
     {
+        public int id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
     }
 }

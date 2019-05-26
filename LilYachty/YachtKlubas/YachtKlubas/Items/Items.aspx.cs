@@ -14,7 +14,7 @@ namespace YachtKlubas.Items
             if (!IsPostBack)
             {
                 string ConnectString = "server=localhost;Port=3302;database=test;UID=root;pwd=;";
-                MySqlConnection cnn = new MySqlConnection
+                //MySqlConnection cnn = new MySqlConnection
             }
         }
 

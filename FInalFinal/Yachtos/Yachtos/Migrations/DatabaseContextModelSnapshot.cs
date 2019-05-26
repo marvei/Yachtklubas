@@ -21,11 +21,11 @@ namespace Yachtos.Migrations
                     b.Property<string>("EmployeeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("fk_UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("EmployeeId");
 
-                    b.HasIndex("fk_UserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Employee");
                 });
@@ -118,7 +118,8 @@ namespace Yachtos.Migrations
                 {
                     b.HasOne("Yachtos.Models.User", "fk_User")
                         .WithMany()
-                        .HasForeignKey("fk_UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Yachtos.Models.Items", b =>

@@ -4,13 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Yachtos.Database;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yachtos.Models
 {
     public class Employee
     {
         public string EmployeeId { get; set; }
-        public User fk_User { get; set; }
+        public virtual User fk_User { get; set; }
+
+        [ForeignKey("id")]
+        public int UserId { get; set; }
         
 
         public List<Employee> GetEmployee()

@@ -23,7 +23,11 @@
 
   
                 <label class="control-label"></label>
+<<<<<<< Updated upstream
                 <select asp-for="UserId" asp-items="@(new SelectList(Model.GetUsers(),"Id","Username"))">
+=======
+                <select asp-for="id" asp-items="@(new SelectList(Model.GetUsers(),"Id","Username"))">
+>>>>>>> Stashed changes
                         <option>--SelectOne---</option>
                 </select>
             <div class="form-group">

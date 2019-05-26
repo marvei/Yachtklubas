@@ -24,9 +24,9 @@ namespace Yachtos.Controllers
         }
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateConfirmed([Bind("EmployeeId, fk_User, id")] Employee employee)
+        public IActionResult CreateConfirmed([Bind("EmployeeId, UserId")] Employee employee)
         {
-           int c = int.Parse(Request.Form["id"]);
+           int c = int.Parse(Request.Form["UserId"]);
             
             
             DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;

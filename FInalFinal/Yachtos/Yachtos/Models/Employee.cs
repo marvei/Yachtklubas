@@ -11,18 +11,13 @@ namespace Yachtos.Models
     public class Employee
     {
         public string EmployeeId { get; set; }
-<<<<<<< Updated upstream
+
 
         public virtual User fk_User { get; set; }
 
         [ForeignKey("id")]
         public int UserId { get; set; }
 
-=======
-        public User fk_User { get; set; }
-
-        public int id;        
->>>>>>> Stashed changes
 
         public List<Employee> GetEmployee()
         {
@@ -78,11 +73,8 @@ namespace Yachtos.Models
 
             using (var db = new DatabaseContext())
             {
-<<<<<<< Updated upstream
-                db.Employee.Attach(new Employee { EmployeeId = this.EmployeeId, fk_User = temp, UserId = id });
-=======
-                db.Employee.Attach(new Employee { EmployeeId = this.EmployeeId, fk_User = temp  });
->>>>>>> Stashed changes
+                db.Employee.Add(new Employee { EmployeeId = this.EmployeeId, UserId = id });
+
                 db.SaveChanges();
             }
         }

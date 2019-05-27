@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.EmployeeId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fk_User.Username)
+                @Html.DisplayNameFor(model => model.getUserById(model.UserId).Username)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fk_User.Email)
+                @Html.DisplayNameFor(model => model.getUserById(model.UserId).Email)
             </th>
             <th></th>
         </tr>
@@ -31,10 +31,10 @@
                 @Html.DisplayFor(modelItem => item.EmployeeId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fk_User.Username)
+                @Html.DisplayFor(modelItem => item.getUserById(item.UserId).Username)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fk_User.Email)
+                @Html.DisplayFor(modelItem => item.getUserById(item.UserId).Email)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EmployeeId">Edit</a> |

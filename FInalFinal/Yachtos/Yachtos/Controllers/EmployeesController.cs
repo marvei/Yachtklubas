@@ -30,7 +30,7 @@ namespace Yachtos.Controllers
             
             
             DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
-            employee.Create(c);
+            employee.Create();
 
             return RedirectToAction(nameof(Index));
         }

@@ -12,6 +12,15 @@ namespace Yachtos.Controllers
 {
     public class FavoritesController : Controller
     {
-
+        public IActionResult Index()
+        {
+            Favorites favs = new Favorites();
+            return View(favs.getFavs());
+        }
+        public IActionResult Create()
+        {
+            Favorites favs = new Favorites();
+            return View(favs);
+        }
     }
 }

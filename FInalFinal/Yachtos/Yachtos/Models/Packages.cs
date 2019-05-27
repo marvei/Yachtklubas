@@ -31,5 +31,15 @@ namespace Yachtos.Models
             }
             return items;
         }
+
+        public Packages getPackageById(int id)
+        {
+            Packages temp = new Packages();
+            using (var db = new DatabaseContext())
+            {
+                temp = db.Packages.Find(id);
+            }
+            return temp;
+        }
     }
 }

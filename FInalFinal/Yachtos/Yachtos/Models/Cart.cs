@@ -69,9 +69,21 @@ namespace Yachtos.Models
         {
             using (var db = new DatabaseContext())
             {
-                db.Cart.Add(new Cart { CartId = this.CartId, ItemsId = this.ItemsId });
+                db.Cart.Add(new Cart { ItemsId = this.ItemsId });
                 db.SaveChanges();
             }
+        }
+
+        public void Update()
+        {
+            Cart cart = new Cart();
+            cart.ItemsId = ItemsId;
+            using (var db = new DatabaseContext())
+            {
+                db.Cart.Add(new Cart { ItemsId = cart.ItemsId });
+                db.SaveChanges();
+            }
+
         }
     }
 }

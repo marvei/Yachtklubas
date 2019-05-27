@@ -13,11 +13,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ItemsId)
+                Pavadinimas
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
+            <th>Tipas</th>
             <th></th>
         </tr>
     </thead>
@@ -25,10 +23,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemsId)
+                @Html.DisplayFor(modelItem => item.getFavoriteById(item.ItemsId).Item)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
+                @Html.DisplayFor(modelItem => item.getFavoriteById(item.ItemsId).description)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.FavoritesId">Edit</a> |

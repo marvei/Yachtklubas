@@ -40,7 +40,8 @@
                 @Html.DisplayFor(modelItem => item.getStorageById(item.StorageId).kiekis)
             </td>
             <td>
-                <a asp-area="" asp-controller="Carts" asp-action="Create" asp-route-ItemsId="@item.id">Add to cart</a> |
+                @Html.ActionLink("add", "Create", "Carts", new { ItemsId = item.id }, null);
+                
                 <a asp-action="Favorites" asp-route-id="@item.id">Add to favorites</a>
             </td>
             <td>

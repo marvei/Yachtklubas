@@ -123,5 +123,25 @@ namespace Yachtos.Models
                 }
             }
         }
+
+        public void Update()
+        {
+            Items temp = new Items();
+            temp.id = id;
+            temp.price = price;
+            using (var db = new DatabaseContext())
+            {
+                foreach (var item in db.Items)
+                {
+                    if (item.id == id)
+                    {
+                        item.price = temp.price;
+                        db.Items.Update(item);
+                        db.SaveChanges();
+
+                    }
+                }
+            }
+        }
     }
 }

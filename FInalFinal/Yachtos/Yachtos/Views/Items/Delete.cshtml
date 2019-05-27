@@ -17,6 +17,30 @@
         <dd>
             @Html.DisplayFor(model => model.price)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fk_storage.Item)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.getStorageById(model.StorageId).Item)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fk_storage.kiekis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.getStorageById(model.StorageId).kiekis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fk_storage.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.getStorageById(model.StorageId).description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.fk_storage.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.getStorageById(model.StorageId).Image)
+        </dd>
     </dl>
     
     <form asp-action="Delete">

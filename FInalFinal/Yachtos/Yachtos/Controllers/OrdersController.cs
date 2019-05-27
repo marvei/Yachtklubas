@@ -12,142 +12,46 @@ namespace Yachtos.Controllers
 {
     public class OrdersController : Controller
     {
-        private readonly DatabaseContext _context;
-
-        public OrdersController(DatabaseContext context)
-        {
-            _context = context;
-        }
-
-        // GET: Orders
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Order.ToListAsync());
-        }
-
-        // GET: Orders/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
+            public IActionResult Index()
             {
-                return NotFound();
+                Order order = new Order();
+                return View(order.GetOrder());
             }
-
-            var order = await _context.Order
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (order == null)
+            public IActionResult Create()
             {
-                return NotFound();
+                Order order = new Order();
+                return View(order);
             }
-
-            return View(order);
-        }
-
-        // GET: Orders/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Orders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,price,descprition,busena")] Order order)
-        {
-            if (ModelState.IsValid)
+            [HttpPost, ActionName("Create")]
+            [ValidateAntiForgeryToken]
+            public IActionResult CreateConfirmed([Bind("EmployeeId, UserId")] Order order)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
+                int c = int.Parse(Request.Form["UserId"]);
+
+
+                DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+                order.Create();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(order);
-        }
 
-        // GET: Orders/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order.FindAsync(id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-            return View(order);
+            int? PollId = id;
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            Order poll = new Order();
+            return View(poll.GetOrder(id: PollId));
         }
-
-        // POST: Orders/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,price,descprition,busena")] Order order)
+        public IActionResult EditConfirmed([Bind("id, descprition")] Order poll)
         {
-            if (id != order.id)
-            {
-                return NotFound();
-            }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(order);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!OrderExists(order.id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(order);
-        }
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            poll.Update();
 
-        // GET: Orders/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var order = await _context.Order
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order);
-        }
-
-        // POST: Orders/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var order = await _context.Order.FindAsync(id);
-            _context.Order.Remove(order);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool OrderExists(int id)
-        {
-            return _context.Order.Any(e => e.id == id);
-        }
     }
 }

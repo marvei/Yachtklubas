@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Yachtos.Models;
 
 namespace Yachtos.Database
 {
@@ -22,6 +23,10 @@ namespace Yachtos.Database
             {
                 optionsBuilder.UseSqlite("Data Source=Yachtos.db");
             }
+
+
+
+        public DbSet<Yachtos.Models.Favorites> Favorites { get; set; }
 
 
 

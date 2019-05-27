@@ -36,6 +36,7 @@ namespace Yachtos.Controllers
         {
             int? PollId = id;
             DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            
             Storage poll = new Storage();
             return View(poll.GetPoll(id: PollId));
         }

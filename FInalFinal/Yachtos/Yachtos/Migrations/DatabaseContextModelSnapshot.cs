@@ -16,6 +16,18 @@ namespace Yachtos.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.11-servicing-32099");
 
+            modelBuilder.Entity("Yachtos.Models.Cart", b =>
+                {
+                    b.Property<int>("CartId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ItemsId");
+
+                    b.HasKey("CartId");
+
+                    b.ToTable("Cart");
+                });
+
             modelBuilder.Entity("Yachtos.Models.Employee", b =>
                 {
                     b.Property<string>("EmployeeId")
@@ -35,15 +47,35 @@ namespace Yachtos.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int?>("CartId");
+
                     b.Property<int>("StorageId");
 
                     b.Property<double>("price");
 
                     b.HasKey("id");
 
+                    b.HasIndex("CartId");
+
                     b.HasIndex("StorageId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("Yachtos.Models.Order", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("busena");
+
+                    b.Property<string>("descprition");
+
+                    b.Property<double>("price");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("Yachtos.Models.Packages", b =>
@@ -126,6 +158,10 @@ namespace Yachtos.Migrations
 
             modelBuilder.Entity("Yachtos.Models.Items", b =>
                 {
+                    b.HasOne("Yachtos.Models.Cart")
+                        .WithMany("Items")
+                        .HasForeignKey("CartId");
+
                     b.HasOne("Yachtos.Models.Storage", "fk_storage")
                         .WithMany()
                         .HasForeignKey("StorageId")

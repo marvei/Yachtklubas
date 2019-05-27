@@ -13,6 +13,8 @@ namespace Yachtos.Database
         public DbSet<Yachtos.Models.Packages> Packages { get; set; }
         public DbSet<Yachtos.Models.PackagesItems> PackagesItems { get; set; }
         public DbSet<Yachtos.Models.Employee> Employee { get; set; }
+        public DbSet<Yachtos.Models.Cart> Cart { get; set; }
+        public DbSet<Yachtos.Models.Order> Order { get; set; }
 
 
 

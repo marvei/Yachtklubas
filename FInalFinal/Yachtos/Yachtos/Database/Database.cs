@@ -16,6 +16,7 @@ namespace Yachtos.Database
         public DbSet<Yachtos.Models.Employee> Employee { get; set; }
         public DbSet<Yachtos.Models.Cart> Cart { get; set; }
         public DbSet<Yachtos.Models.Order> Order { get; set; }
+        public DbSet<Yachtos.Models.Favorites> Favorites { get; set; }
 
 
 
@@ -26,8 +27,7 @@ namespace Yachtos.Database
 
 
 
-        public DbSet<Yachtos.Models.Favorites> Favorites { get; set; }
-
+       
 
 
     }

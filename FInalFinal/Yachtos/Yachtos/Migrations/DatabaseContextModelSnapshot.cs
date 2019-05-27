@@ -42,6 +42,20 @@ namespace Yachtos.Migrations
                     b.ToTable("Employee");
                 });
 
+            modelBuilder.Entity("Yachtos.Models.Favorites", b =>
+                {
+                    b.Property<int>("FavoritesId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ItemsId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("FavoritesId");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("Yachtos.Models.Items", b =>
                 {
                     b.Property<int>("id")

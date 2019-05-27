@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+    double p = 0;
 }
 
 <h2>Index</h2>
@@ -13,8 +14,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ItemsId)
+                Pavadinimas
             </th>
+            <th>Kaina</th>
             <th></th>
         </tr>
     </thead>
@@ -22,14 +24,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemsId)
+                @Html.DisplayFor(modelItem => item.getItemInfo(item.ItemsId).Item)
             </td>
+            <td>@Html.DisplayFor(modelItem => item.getItemPrice(item.ItemsId).price)</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CartId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CartId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CartId">Delete</a>
             </td>
         </tr>
+   p += item.getItemPrice(item.ItemsId).price;
 }
     </tbody>
+    <tfoot>
+        <tr>Viso kaina: @p</tr>
+        <tr>                Uzsisakyti</tr>
+    
+    </tfoot>
 </table>

@@ -17,6 +17,14 @@ namespace Yachtos.Controllers
                 Order order = new Order();
                 return View(order.GetOrder());
             }
+
+        public IActionResult Pay()
+        {
+            Order order = new Order();
+            return View(order);
+        }
+            
+            
             public IActionResult Create()
             {
                 Order order = new Order();

@@ -102,6 +102,8 @@ namespace Yachtos.Models
         //    }
         //}
 
+        public double price;
+
         //public void getItemTypes()
         //{
         //    List<string> temp = new List<string>();

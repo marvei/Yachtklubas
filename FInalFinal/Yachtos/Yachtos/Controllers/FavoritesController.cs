@@ -22,5 +22,18 @@ namespace Yachtos.Controllers
             Favorites favs = new Favorites();
             return View(favs);
         }
+
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateConfirmed([Bind("UserId, ItemsId")] Favorites favorites)
+        {
+            //int c = int.Parse(Request.Form["UserId"]);
+
+
+            DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+            favorites.Create();
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

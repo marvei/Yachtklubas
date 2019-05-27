@@ -22,5 +22,11 @@ namespace Yachtos.Controllers
             Packages pack = new Packages();
             return View(pack);
         }
+
+        public IActionResult Details()
+        {
+            PackagesItems pack = new PackagesItems();
+            return View(pack);
+        }
     }
 }

@@ -37,5 +37,14 @@ namespace Yachtos.Models
             }
             return temp;
         }
+        public void Create()
+        {
+            using (var db = new DatabaseContext())
+            {
+                db.Favorites.Add(new Favorites { ItemsId = this.ItemsId, UserId = this.UserId });
+                db.SaveChanges();
+            }
+        }
+
     }
 }

@@ -22,6 +22,12 @@ namespace Yachtos.Controllers
             Cart cart = new Cart();
             return View(cart);
         }
+
+        public IActionResult Details()
+        {
+            Cart cart = new Cart();
+            return View(cart);
+        }
         [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public IActionResult CreateConfirmed([Bind("ItemsId")] Cart cart)

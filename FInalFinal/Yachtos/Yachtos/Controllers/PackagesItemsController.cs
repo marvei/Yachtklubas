@@ -12,142 +12,27 @@ namespace Yachtos.Controllers
 {
     public class PackagesItemsController : Controller
     {
-        private readonly DatabaseContext _context;
-
-        public PackagesItemsController(DatabaseContext context)
+        public IActionResult Index()
         {
-            _context = context;
+            PackagesItems packItems = new PackagesItems();
+            return View(packItems.GetPackItems());
         }
-
-        // GET: PackagesItems
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.PackagesItems.ToListAsync());
-        }
-
-        // GET: PackagesItems/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var packagesItems = await _context.PackagesItems
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (packagesItems == null)
-            {
-                return NotFound();
-            }
-
-            return View(packagesItems);
-        }
-
-        // GET: PackagesItems/Create
         public IActionResult Create()
         {
-            return View();
+            PackagesItems package = new PackagesItems();
+            return View(package);
         }
-
-        // POST: PackagesItems/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id")] PackagesItems packagesItems)
+        public IActionResult CreateConfirmed([Bind("id, PackageId, ItemsId")] PackagesItems packItems)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(packagesItems);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(packagesItems);
-        }
+            List<int> c = Request.Form["ItemsId"].Select(int.Parse).ToList();
+                
+                DatabaseContext context = HttpContext.RequestServices.GetService(typeof(DatabaseContext)) as DatabaseContext;
+                packItems.Create();
 
-        // GET: PackagesItems/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var packagesItems = await _context.PackagesItems.FindAsync(id);
-            if (packagesItems == null)
-            {
-                return NotFound();
-            }
-            return View(packagesItems);
-        }
-
-        // POST: PackagesItems/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id")] PackagesItems packagesItems)
-        {
-            if (id != packagesItems.id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(packagesItems);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PackagesItemsExists(packagesItems.id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(packagesItems);
-        }
-
-        // GET: PackagesItems/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var packagesItems = await _context.PackagesItems
-                .FirstOrDefaultAsync(m => m.id == id);
-            if (packagesItems == null)
-            {
-                return NotFound();
-            }
-
-            return View(packagesItems);
-        }
-
-        // POST: PackagesItems/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var packagesItems = await _context.PackagesItems.FindAsync(id);
-            _context.PackagesItems.Remove(packagesItems);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PackagesItemsExists(int id)
-        {
-            return _context.PackagesItems.Any(e => e.id == id);
-        }
     }
 }
